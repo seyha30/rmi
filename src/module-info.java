@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author sseyha
- *
- */
-module rmi {
-}
