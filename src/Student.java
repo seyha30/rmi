@@ -66,11 +66,20 @@ public class Student {
 	}
 
 	public Student(int id, String name, String dateOfBirth, String course) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.dateOfBirth = dateOfBirth;
 		this.course = course;
+	}
+
+	public Student(String name, String dateOfBirth, String course) {
+		this.name = name;
+		this.dateOfBirth = dateOfBirth;
+		this.course = course;
+	}
+
+	public Student() {
+
 	}
 
 }
