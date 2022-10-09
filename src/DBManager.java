@@ -1,10 +1,10 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 /**
  * @author sseyha
  * @date 9 តុលា 2022
- *  TODO
  */
 public class DBManager {
 	private static DBManager _instance;
