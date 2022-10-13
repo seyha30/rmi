@@ -1,7 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 /**
  * @author sseyha
  * @date 9 តុលា 2022
@@ -40,7 +39,7 @@ public class DBManager {
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-			String URL = "jdbc:sqlserver://localhost;databaseName=NID;user=sa;password=Imdestar;";
+			String URL = "jdbc:sqlserver://localhost;databaseName=test;user=sa;password=;";
 			con = DriverManager.getConnection(URL);
 		} catch (Exception e) {
 			System.out.println(e);
@@ -53,7 +52,7 @@ public class DBManager {
 
 		try {
 
-			String strCon = "jdbc:mysql://127.0.0.1/test?user=rtuser&password=rtpass";
+			String strCon = "jdbc:mysql://127.0.0.1/test?user=admin&password=admin";
 			con = DriverManager.getConnection(strCon);
 		} catch (SQLException se) {
 			System.out.println(se);

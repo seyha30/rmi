@@ -28,22 +28,16 @@ public class StudentServer extends UnicastRemoteObject implements IRemoteStudent
 	 */
 	protected StudentServer() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public int save(Student p) throws RemoteException {
-		return StudentRepository.save(p);
+	public void save(Student student) throws RemoteException {
+		StudentRepository.save(student);
 	}
 
 	@Override
-	public int update(Student student) throws RemoteException {
-		return StudentRepository.update(student);
-	}
-
-	@Override
-	public int deleteAll() throws RemoteException {
-		return StudentRepository.deleteAll();
+	public void update(Student student) throws RemoteException {
+		StudentRepository.update(student);
 	}
 
 	@Override
@@ -54,6 +48,15 @@ public class StudentServer extends UnicastRemoteObject implements IRemoteStudent
 	@Override
 	public ArrayList<Student> findByName(String criteria) throws RemoteException {
 		return StudentRepository.findByName(criteria);
+	}
+	@Override
+	public Student findById(int id) throws RemoteException {
+		return StudentRepository.findById(id);
+	}
+
+	@Override
+	public void delete(int id) throws RemoteException {
+		StudentRepository.delete(id);
 	}
 
 }

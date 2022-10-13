@@ -1,3 +1,5 @@
+import java.awt.HeadlessException;
+import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,8 +34,7 @@ public class StudentRepository {
 
 	}
 
-	public static int update(Student student) {
-		int iRet = -1;
+	public static void update(Student student) {
 		try {
 			Connection con = DBManager.getInstance().getConnection();
 			String SQL = "UPDATE student SET name=?, dob=? ,course WHERE Id=?";
@@ -41,16 +42,12 @@ public class StudentRepository {
 			preparedStatement.setString(1, student.getName());
 			preparedStatement.setString(2, student.getDateOfBirth());
 			preparedStatement.setString(3, student.getCourse());
-
-			iRet = preparedStatement.executeUpdate();
-
+			preparedStatement.executeUpdate();
 			preparedStatement.close();
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		return iRet;
 	}
 
 	public static int deleteAll() {
@@ -124,4 +121,44 @@ public class StudentRepository {
 
 		return students;
 	}
+
+	public static void delete(int id) {
+		try {
+			Connection con = DBManager.getInstance().getConnection();
+			String SQL = "delete student  WHERE Id=?";
+			PreparedStatement preparedStatement = con.prepareStatement(SQL);
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate(SQL);
+			preparedStatement.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Student findById(int id) {
+		Student student = new Student();
+		try {
+			String QRY = "SELECT * FROM Student WHERE name LIKE(?) ORDER BY id";
+			Connection con = DBManager.getInstance().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement(QRY);
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				student.setId(resultSet.getInt("Id"));
+				student.setName(resultSet.getString("name"));
+				student.setDateOfBirth(resultSet.getString("dob"));
+				student.setCourse(resultSet.getString("course"));
+			}
+			preparedStatement.close();
+			con.close();
+			return student;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return student;
+
+	}
+
 }

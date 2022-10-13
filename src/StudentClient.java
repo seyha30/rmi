@@ -2,7 +2,6 @@ import java.awt.HeadlessException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Scanner;
-
 /**
  * @author sseyha
  * @date 9 តុលា 2022
@@ -13,10 +12,10 @@ public class StudentClient {
 		String name = "";
 		String dateOfBirth = "";
 		String course = "";
-		if (args.length != 1) {
-			System.out.println("Usag: java StudentClientRMI <host>");
-			System.exit(0);
-		}
+//		if (args.length != 1) {
+//			System.out.println("Usag: java StudentClientRMI <host>");
+//			System.exit(0);
+//		}
 		try {
 			Registry registry = LocateRegistry.getRegistry("localhost");
 			IRemoteStudent iRemoteStudent = (IRemoteStudent) registry.lookup("StudentServer");
@@ -50,13 +49,8 @@ public class StudentClient {
 		} catch (
 
 		Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 
-	}
-
-	private static String retStr(int iRet) {
-		return iRet != 0 ? "Sucessful" : "Failed";
 	}
 }
