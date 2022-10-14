@@ -121,6 +121,34 @@ public class StudentRepository {
 
 		return students;
 	}
+	public static ArrayList<Student> findByCourse(String course) {
+		ArrayList<Student> students = new ArrayList<Student>();
+		
+		try {
+			String QRY = "SELECT * FROM Student WHERE name LIKE(?) ORDER BY id";
+			Connection con = DBManager.getInstance().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement(QRY);
+			preparedStatement.setString(1, "%" + course + "%");
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while (resultSet.next()) {
+				Student student = new Student();
+				student.setId(resultSet.getInt("Id"));
+				student.setName(resultSet.getString("name"));
+				student.setDateOfBirth(resultSet.getString("dob"));
+				student.setCourse(resultSet.getString("course"));
+				students.add(student);
+			}
+			
+			preparedStatement.close();
+			con.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return students;
+	}
 
 	public static void delete(int id) {
 		try {
@@ -160,5 +188,9 @@ public class StudentRepository {
 		return student;
 
 	}
+	
+	
+	
+	
 
 }

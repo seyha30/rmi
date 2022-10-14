@@ -59,4 +59,9 @@ public class StudentServer extends UnicastRemoteObject implements IRemoteStudent
 		StudentRepository.delete(id);
 	}
 
+	@Override
+	public ArrayList<Student> findByCourse(String criteria) throws RemoteException {
+		return null;
+	}
+
 }
