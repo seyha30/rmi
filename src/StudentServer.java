@@ -61,7 +61,7 @@ public class StudentServer extends UnicastRemoteObject implements IRemoteStudent
 
 	@Override
 	public ArrayList<Student> findByCourse(String criteria) throws RemoteException {
-		return null;
+		return StudentRepository.findByCourse(criteria);
 	}
 
 }
