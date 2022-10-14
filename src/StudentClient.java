@@ -24,8 +24,7 @@ public class StudentClient {
 			try (Scanner scanner = new Scanner(System.in)) {
 				while (true) {
 					System.out.print("Enter your chioce : ");
-					System.out.print(
-							"1: Save, 2: Update, 3: Delete, 4: FindAll, 5: FindById, 6: FindByName, 7: FindByCourse, 	0-Quit  : ");
+					System.out.print("1: Save, 2: Update, 3: Delete, 4: FindAll, 5: FindById, 6: FindByName, 7: FindByCourse, 	0-Quit  : ");
 					String command = scanner.nextLine();
 					if ("1".equalsIgnoreCase(command)) {
 						System.out.println("Enter name :");

@@ -78,7 +78,6 @@ public class DBManager {
 
 		return con;
 	}
-
 	public static Connection getSQLiteConnection() {
 		Connection con = null;
 		try {
