@@ -50,10 +50,8 @@ public class StudentClient {
 						System.out.println("Enter id :");
 						id = scanner.nextInt();
 						iRemoteStudent.delete(id);
-
 					} else if ("4".equalsIgnoreCase(command)) {
 						iRemoteStudent.findAll();
-
 					} else if ("5".equalsIgnoreCase(command)) {
 						System.out.println("Enter id :");
 						id = scanner.nextInt();
